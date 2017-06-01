@@ -8,7 +8,7 @@ queue_init:
 	MOV R0,#QUEUE_BEGIN ; Get address of the first element
 init_elements:
 	MOV @R0,#0xFF ; Initialize element with zero
-	; Incincludee R0
+	; Include R0
 		MOV A,R0 ; Load Accu
 		ADD A,#0x01 ; Increase element pointer
 		MOV R0,A ; Set R0
