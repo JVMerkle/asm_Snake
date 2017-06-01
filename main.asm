@@ -1,13 +1,13 @@
 ; Provisorische main
 main:
 	CALL queue_init
-	MOV 20H,#0x00
-	MOV R0,@QUEUE_HEAD
-	MOV P0,R0
+	MOV A,#0xDE
+	CALL queue_push
+	CALL queue_pop
 loop:	
 	NOP
 	sjmp loop
 
-INCLUDE "queue.inc"
+INCLUDE "queue.asm"
 
 END

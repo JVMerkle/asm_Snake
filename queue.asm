@@ -49,10 +49,12 @@ queue_pop:
 
 ; A ()
 queue_head:
-	MOV A,@QUEUE_HEAD
+	MOV R0,QUEUE_HEAD
+	MOV A,@R0
 	RET
 
 ; void (A)
 queue_tail:
-	MOV A,@QUEUE_TAIL
+	MOV R0,QUEUE_TAIL
+	MOV A,@R0
 	RET
