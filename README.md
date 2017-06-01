@@ -4,7 +4,7 @@ Development with the [MCU 8051 IDE](https://sourceforge.net/projects/mcu8051ide/
 # General Information for developing with the 8051
 [Wikipedia](https://en.wikipedia.org/wiki/Intel_MCS-51)
 
-[Instruction Set](https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movx)
+[Instruction Set](https://www.win.tue.nl/~aeb/comp/8051/set8051.html)
 
 [Instruction Set (German)](http://www.global.hs-mittweida.de/~mcls/deutsch/helpsys/t_as2.htm)
 
