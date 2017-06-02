@@ -1,7 +1,7 @@
 ; Provisorische main
 main:
 	CALL queue_init
-	MOV A,#0xDE
+	MOV A, #0xDE
 	CALL queue_push
 	CALL queue_pop
 loop:	
