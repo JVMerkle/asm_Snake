@@ -1,7 +1,7 @@
 QUEUE_HEAD equ 20H
 QUEUE_TAIL equ 21H
 QUEUE_BEGIN equ 22H
-QUEUE_END equ 25H
+QUEUE_END equ 54H
 
 ; Initialize Queue
 queue_init:
