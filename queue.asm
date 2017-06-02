@@ -46,15 +46,3 @@ queue_pop:
 	MOV QUEUE_TAIL, A ; Set the HEAD
 	MOV A,R1 ; Set return value
 	RET
-
-; A ()
-queue_head:
-	MOV R0,QUEUE_HEAD
-	MOV A,@R0
-	RET
-
-; void (A)
-queue_tail:
-	MOV R0,QUEUE_TAIL
-	MOV A,@R0
-	RET
