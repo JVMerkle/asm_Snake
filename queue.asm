@@ -36,6 +36,7 @@ queue_push:
 ; A ()
 queue_pop:
 	MOV R0, QUEUE_TAIL
+	MOV A, @R0
 	MOV @R0, #0xFF ; Clear the element
 	MOV R0, A
 	MOV A, QUEUE_TAIL
