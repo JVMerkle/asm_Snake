@@ -21,16 +21,16 @@ init_elements:
 
 ; void (A)
 queue_push:
-	MOV R0,A ; R0 is the new element
+	PUSH A ; Push the new element value
 	MOV A,QUEUE_HEAD
 	ADD A,#0x01
 	CJNE A,#QUEUE_END + 0x01,do_it ; Check queue bounds
 		MOV A,#QUEUE_BEGIN ; Set next element
 	do_it:
-	MOV R1,A ; R1 is the pointer to the new element
-	MOV A,R0 ; Set A to the new element
-	MOV @R1,A ; Write the new element
-	MOV QUEUE_HEAD, R1 ; Set the HEAD
+	MOV R0,A ; R0 is the pointer to the new element
+	POP A ; Pop the element value
+	MOV @R0,A ; Write the element value
+	MOV QUEUE_HEAD, R0 ; Set the head
 	RET
 
 ; A ()
