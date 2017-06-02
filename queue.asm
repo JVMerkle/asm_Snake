@@ -36,13 +36,13 @@ queue_push:
 ; A ()
 queue_pop:
 	MOV R0,QUEUE_TAIL
-	MOV R1,A
 	MOV @R0,#0xFF ; Clear the element
+	MOV R0,A
 	MOV A,QUEUE_TAIL
 	ADD A,#0x01
 	CJNE A,#QUEUE_END + 0x01,do_it_2 ; Check queue bounds
 		MOV A,#QUEUE_BEGIN ; Set next element
 	do_it_2:
-	MOV QUEUE_TAIL, A ; Set the HEAD
-	MOV A,R1 ; Set return value
+	MOV QUEUE_TAIL, A ; Set the tail
+	MOV A,R0 ; Set return value
 	RET
