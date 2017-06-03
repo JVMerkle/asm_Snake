@@ -29,7 +29,6 @@ isr_ex0:
 	RET
 
 isr_et0:
-	MOV TH0, #0xFF
 	RET
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -45,8 +44,6 @@ init:
 SETB EA ; Global Interrupts
 SETB EX0 ; External 0 Interrupt
 SETB ET0 ; Timer 0 Interrupt
-MOV TH0, #0xFF
-SETB TR0 ; Start Timer 0
 
 ; Init Snake
 CALL queue_init
@@ -59,6 +56,8 @@ CALL queue_push
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; MAIN
+
+SETB TR0 ; Start Timer 0
 
 main:
 	NOP
