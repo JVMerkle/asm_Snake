@@ -29,13 +29,29 @@ add_to_display:
 	MOV A, @R0 ; Get value
 	MOV R1, A
 	CALL get_axis_x
-	MOV A, R2 ; Save x in R2
-	MOV R3, A
+	CALL get_axis_byte
+	MOV X_AXIS, R3
 	CALL get_axis_y
+	CALL get_axis_byte
+	MOV Y_AXIS, R3
+	LCALL RENDER
 	RET
-; R3 (R3)
-get_axis_byte:
 	
+; R3 (R2)
+; Decode 3 bit axis representation to full byte
+get_axis_byte:
+	MOV A, R2
+	JNZ not_zero
+	MOV R3, #0x01
+	RET
+not_zero:
+	MOV R3, #10000000b
+not_zero2:
+	; Left-shift R2
+		MOV A,R3
+		RL A
+		MOV R3, A
+	DJNZ R2, not_zero2
 	RET
 
 ; R2 (R1)
