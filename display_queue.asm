@@ -1,9 +1,3 @@
-; QUEUE_HEAD
-; QUEUE_TAIL
-; QUEUE_BEGIN
-; QUEUE_END
-
-; void (A)
 display:
 	MOV R0, QUEUE_TAIL
 	CALL add_to_display
