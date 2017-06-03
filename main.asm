@@ -34,22 +34,27 @@ isr_ex0:
 isr_et0:
 	DJNZ R6, ret_isr_et0 ; Check if R6 is null
 	MOV R6, #T1_COUNT ; Re-init timer count register
-	CALL one_second
+	LCALL one_second
 ret_isr_et0:
 	RET
 
-one_second:
-	RET
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; INCLUDES
 
 INCLUDE "queue.asm"
 
-init:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SUBROUTINES
+
+one_second:
+	; Do game cycle (move snake)
+	RET
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; INITIALISATION
+
+init:
 
 SETB EA ; Global Interrupts
 SETB EX0 ; External 0 Interrupt
