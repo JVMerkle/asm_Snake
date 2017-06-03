@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; DEFINITIONS
 
-T1_COUNT equ 16d ; ET0 runs T1_COUNT times to reach a one second interrupt
+T0_COUNT equ 16d ; ET0 runs T0_COUNT times to reach a one second interrupt
 DIR equ R7 ; Direction Byte set by ISR
 TCR equ R6 ; Timer count register used by ET0
 
@@ -32,7 +32,7 @@ isr_ex0:
 
 isr_et0:
 	DJNZ TCR, ret_isr_et0 ; Check if R6 is null
-	MOV TCR, #T1_COUNT ; Re-init timer count register
+	MOV TCR, #T0_COUNT ; Re-init timer count register
 	LCALL one_second
 ret_isr_et0:
 	RET
@@ -59,7 +59,7 @@ SETB EA ; Global Interrupts
 SETB EX0 ; External 0 Interrupt
 SETB ET0 ; Timer 0 Interrupt
 MOV TMOD, #00000001b ; Enable M00
-MOV TCR, #T1_COUNT ; Init timer count register
+MOV TCR, #T0_COUNT ; Init timer count register
 
 ; Init queue
 CALL queue_init
