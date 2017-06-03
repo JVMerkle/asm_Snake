@@ -8,4 +8,6 @@ Development with the [MCU 8051 IDE](https://sourceforge.net/projects/mcu8051ide/
 
 [Instruction Set (German)](http://www.global.hs-mittweida.de/~mcls/deutsch/helpsys/t_as2.htm)
 
+[Interrupts](https://www.elprocus.com/types-of-interrupts-in-8051-microcontroller-and-interrupt-programming/)
+
 Texas Instruments Tutorial: ftp://ftp.ti.com/pub/data_acquisition/MSC_CD-ROM/8051_Tutorial/tut8051.html
