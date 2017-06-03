@@ -1,10 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; DEFINITIONS
 
-; R7: Direction Byte set by ISR
-; R6: Timer count register
-
 T1_COUNT equ 16d ; ET0 runs T1_COUNT times to reach a one second interrupt
+DIR equ R7 ; Direction Byte set by ISR
+TCR equ R6 ; Timer count register used by ET0
 
 ORG 0000h
 LJMP init
@@ -28,12 +27,12 @@ isr_ex0:
 	CJNE A, 0x0F, valid ; The interrupt is invalid when no button is pressed
 	RETI
 	valid:
-		MOV R7, A
+		MOV DIR, A
 	RET
 
 isr_et0:
-	DJNZ R6, ret_isr_et0 ; Check if R6 is null
-	MOV R6, #T1_COUNT ; Re-init timer count register
+	DJNZ TCR, ret_isr_et0 ; Check if R6 is null
+	MOV TCR, #T1_COUNT ; Re-init timer count register
 	LCALL one_second
 ret_isr_et0:
 	RET
@@ -60,7 +59,7 @@ SETB EA ; Global Interrupts
 SETB EX0 ; External 0 Interrupt
 SETB ET0 ; Timer 0 Interrupt
 MOV TMOD, #00000001b ; Enable M00
-MOV R6, #T1_COUNT ; Init timer count register
+MOV TCR, #T1_COUNT ; Init timer count register
 
 ; Init queue
 CALL queue_init
