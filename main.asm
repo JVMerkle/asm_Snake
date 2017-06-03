@@ -11,13 +11,26 @@ LJMP init
 
 ; ISR EX0
 ORG 0003h
-MOV A,P2
-ANL A, #0x0F ; Mask the 4 buttons
-CJNE A, 0x0F, valid ; The interrupt is invalid when no button is pressed
+CALL isr_ex0
 RETI
-valid:
-	MOV R7, A
+
+; ISR ET0
+ORG 000Bh
+CALL isr_et0
 RETI
+
+isr_ex0:
+	MOV A,P2
+	ANL A, #0x0F ; Mask the 4 buttons
+	CJNE A, 0x0F, valid ; The interrupt is invalid when no button is pressed
+	RETI
+	valid:
+		MOV R7, A
+	RET
+
+isr_et0:
+	MOV TH0, #0xFF
+	RET
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; INCLUDES
@@ -30,7 +43,10 @@ init:
 ; INITIALISATION
 
 SETB EA ; Global Interrupts
-SETB EX0 ; External Interrupt
+SETB EX0 ; External 0 Interrupt
+SETB ET0 ; Timer 0 Interrupt
+MOV TH0, #0xFF
+SETB TR0 ; Start Timer 0
 
 ; Init Snake
 CALL queue_init
@@ -46,5 +62,6 @@ CALL queue_push
 
 main:
 	NOP
+	SJMP main
 
 END
