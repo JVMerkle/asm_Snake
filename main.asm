@@ -42,6 +42,7 @@ ret_isr_et0:
 ; INCLUDES
 
 INCLUDE "queue.asm"
+INCLUDE "display_queue.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; SUBROUTINES
@@ -77,6 +78,7 @@ SETB TR0 ; Start Timer 0
 
 main:
 	NOP
+	LCALL display
 	SJMP main
 
 END
