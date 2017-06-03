@@ -77,7 +77,6 @@ CALL queue_push
 SETB TR0 ; Start Timer 0
 
 main:
-	NOP
 	LCALL display
 	SJMP main
 
