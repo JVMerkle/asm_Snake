@@ -44,6 +44,7 @@ init:
 SETB EA ; Global Interrupts
 SETB EX0 ; External 0 Interrupt
 SETB ET0 ; Timer 0 Interrupt
+MOV TMOD, #00000001b ; Enable M00
 
 ; Init queue
 CALL queue_init
