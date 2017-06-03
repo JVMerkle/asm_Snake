@@ -19,16 +19,18 @@ valid:
 	MOV R7, A
 RETI
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; INCLUDES
+
+INCLUDE "queue.asm"
+
 init:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; INTERRUPTS
+; INITIALISATION
 
 SETB EA ; Global Interrupts
 SETB EX0 ; External Interrupt
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; INITIALISATION
 
 ; Init Snake
 CALL queue_init
@@ -45,11 +47,4 @@ CALL queue_push
 main:
 	NOP
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; INCLUDES
-
-LJMP end
-
-INCLUDE "queue.asm"
-
-end:	END
+END
