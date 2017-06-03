@@ -45,11 +45,11 @@ SETB EA ; Global Interrupts
 SETB EX0 ; External 0 Interrupt
 SETB ET0 ; Timer 0 Interrupt
 
-; Init Snake
+; Init queue
 CALL queue_init
-MOV A, #0011011b ; Point (3,3)
+MOV A, #00110011b ; Point (3,3)
 CALL queue_push
-MOV A, #0100011b ; Point (4,3)
+MOV A, #01000011b ; Point (4,3)
 CALL queue_push
 MOV A, #00101011b ; Point (5,3)
 CALL queue_push
