@@ -40,19 +40,16 @@ add_to_display:
 ; R3 (R2)
 ; Decode 3 bit axis representation to full byte
 get_axis_byte:
-	MOV A, R2
-	JNZ not_zero
-	MOV R3, #0x01
+	MOV R3, #00000001b
+check:
+	DJNZ R2, not_zero
 	RET
 not_zero:
-	MOV R3, #10000000b
-not_zero2:
-	; Left-shift R2
+	; Left-shift R3
 		MOV A,R3
 		RL A
 		MOV R3, A
-	DJNZ R2, not_zero2
-	RET
+	SJMP check
 
 ; R2 (R1)
 get_axis_x:
