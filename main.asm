@@ -5,6 +5,8 @@ T0_COUNT equ 16d ; ET0 runs T0_COUNT times to reach a one second interrupt
 DIR equ R7 ; Direction Byte set by ISR
 TCR equ R6 ; Timer count register used by ET0
 
+ONE_SECOND_FLAG equ 28H ; 0x00 = Set
+
 ORG 0000h
 LJMP init
 
@@ -33,8 +35,9 @@ isr_ex0:
 isr_et0:
 	DJNZ TCR, ret_isr_et0 ; Check if R6 is null
 	MOV TCR, #T0_COUNT ; Re-init timer count register
-	LCALL one_second
-	
+	MOV ONE_SECOND_FLAG, #0x00
+	RET
+
 ret_isr_et0:
 	RET
 
@@ -48,8 +51,9 @@ INCLUDE "display.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; SUBROUTINES
 
-one_second:
-	; Do game cycle (move snake)
+; Move Snake
+snake_next:
+	NOP
 	RET
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -62,6 +66,8 @@ SETB EX0 ; External 0 Interrupt
 SETB ET0 ; Timer 0 Interrupt
 ORL TMOD, #00000001b ; Set ET0 to 16-bit mode
 MOV TCR, #T0_COUNT ; Init timer count register
+
+MOV ONE_SECOND_FLAG, #0xFF ; Unset flag
 
 ; Init queue
 ; Valid points: p(0,0) to p(7,7)
@@ -82,6 +88,10 @@ SETB TR0 ; Start Timer 0
 
 main:
 	LCALL display
+	MOV A, ONE_SECOND_FLAG
+	JNZ main ; Jump when ONE_SECOND_FLAG != 0x00
+	MOV ONE_SECOND_FLAG, #0xFF ; Unset flag
+	LCALL snake_next
 	SJMP main
 
 END
