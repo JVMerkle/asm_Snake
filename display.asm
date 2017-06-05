@@ -1,3 +1,4 @@
+TMP_VAR equ 0x20
 X_AXIS equ 0x21
 Y_AXIS equ 0x22
 
@@ -11,8 +12,8 @@ display:
 		INC R1
 	MOV A, R0
 	ADD A, #0x01
-	MOV 20H, R1
-	CJNE A, 20H, d_end_not_reached ; Check if reached head
+	MOV TMP_VAR, R1
+	CJNE A, TMP_VAR, d_end_not_reached ; Check if reached head
 		LCALL render
 		RET ; END REACHED
 	d_end_not_reached:
