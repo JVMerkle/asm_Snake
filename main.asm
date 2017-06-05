@@ -36,10 +36,10 @@ isr_et0:
 	DJNZ TCR, ret_isr_et0 ; Check if R6 is null
 	MOV TCR, #T0_COUNT ; Re-init timer count register
 	MOV ONE_SECOND_FLAG, #0x00
-	RET
-
 ret_isr_et0:
 	RET
+
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
