@@ -1,5 +1,5 @@
-X_AXIS equ 21H
-Y_AXIS equ 22H
+X_AXIS equ 0x21
+Y_AXIS equ 0x22
 
 ; ()
 display:

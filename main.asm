@@ -5,7 +5,7 @@ T0_COUNT equ 16d ; ET0 runs T0_COUNT times to reach a one second interrupt
 DIR equ R7 ; Direction Byte set by ISR
 TCR equ R6 ; Timer count register used by ET0
 
-ONE_SECOND_FLAG equ 28H ; 0x00 = Set
+ONE_SECOND_FLAG equ 28h ; 0x00 = Set
 
 ORG 0000h
 LJMP init
