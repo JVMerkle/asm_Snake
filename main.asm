@@ -34,6 +34,7 @@ isr_et0:
 	DJNZ TCR, ret_isr_et0 ; Check if R6 is null
 	MOV TCR, #T0_COUNT ; Re-init timer count register
 	LCALL one_second
+	
 ret_isr_et0:
 	RET
 
@@ -59,7 +60,7 @@ init:
 SETB EA ; Global Interrupts
 SETB EX0 ; External 0 Interrupt
 SETB ET0 ; Timer 0 Interrupt
-MOV TMOD, #00000001b ; Enable M00
+ORL TMOD, #00000001b ; Set ET0 to 16-bit mode
 MOV TCR, #T0_COUNT ; Init timer count register
 
 ; Init queue

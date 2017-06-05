@@ -5,23 +5,23 @@ Y_AXIS equ 22H
 display:
 	MOV R0, QUEUE_TAIL
 	CALL add_to_display
-iterate:
+	d_iterate:
 	; Get element addr after head
 		MOV R1, QUEUE_HEAD
 		INC R1
 	MOV A, R0
 	ADD A, #0x01
 	MOV 20H, R1
-	CJNE A, 20H, end_not_reached ; Check if reached head
+	CJNE A, 20H, d_end_not_reached ; Check if reached head
 		LCALL render
 		RET ; END REACHED
-	end_not_reached:
-	CJNE A, #QUEUE_END + 0x01, in_bound ; Check queue bounds
+	d_end_not_reached:
+	CJNE A, #QUEUE_END + 0x01, d_in_bound ; Check queue bounds
 		MOV A, #QUEUE_BEGIN ; Set next element
-	in_bound:
+	d_in_bound:
 	MOV R0, A
 	CALL add_to_display
-	SJMP iterate
+	SJMP d_iterate
 
 ; (R0)
 add_to_display:
@@ -40,17 +40,17 @@ add_to_display:
 ; Decode 3 bit axis representation to full byte
 get_axis_byte:
 	MOV R3, #00000001b
-check:
+	d_check:
 	MOV A, R2
-	JNZ not_zero
+	JNZ d_not_zero
 	RET
-not_zero:
+	d_not_zero:
 	; Left-shift R3
 		MOV A,R3
 		RL A
 		MOV R3, A
 	DEC R2
-	SJMP check
+	SJMP d_check
 
 ; R2 (R1)
 get_axis_x:
