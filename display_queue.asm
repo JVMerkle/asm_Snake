@@ -42,23 +42,22 @@ add_to_display:
 get_axis_byte:
 	MOV R3, #00000001b
 check:
-	DJNZ R2, not_zero
+	MOV A, R2
+	JNZ not_zero
 	RET
 not_zero:
 	; Left-shift R3
 		MOV A,R3
 		RL A
 		MOV R3, A
+	DEC R2
 	SJMP check
 
 ; R2 (R1)
 get_axis_x:
 	MOV A, R1
 	ANL A, #0xF0
-	RR A
-	RR A
-	RR A
-	RR A
+	SWAP A
 	MOV R2, A
 	RET
 
