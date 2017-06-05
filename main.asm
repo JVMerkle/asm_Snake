@@ -42,7 +42,7 @@ ret_isr_et0:
 ; INCLUDES
 
 INCLUDE "queue.asm"
-INCLUDE "display_queue.asm"
+INCLUDE "display.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; SUBROUTINES
