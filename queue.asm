@@ -13,9 +13,7 @@ queue_init:
 init_elements:
 	MOV @R0, #0xFF ; Initialize element with zero
 	; Increase R0
-		MOV A, R0 ; Load Accu
-		ADD A, #0x01 ; Increase element pointer
-		MOV R0, A ; Set R0
+	INC R0 ; Increase element pointer
 	CJNE R0, #QUEUE_END + 0x01, init_elements ; Loop through all elements
 	RET
 

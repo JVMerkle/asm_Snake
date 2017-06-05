@@ -7,9 +7,8 @@ display:
 	CALL add_to_display
 iterate:
 	; Get element addr after head
-		MOV A, QUEUE_HEAD
-		ADD A, #0x01
-		MOV R1, A
+		MOV R1, QUEUE_HEAD
+		INC R1
 	MOV A, R0
 	ADD A, #0x01
 	MOV 20H, R1

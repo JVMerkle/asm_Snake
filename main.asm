@@ -64,12 +64,18 @@ MOV TCR, #T0_COUNT ; Init timer count register
 
 ; Init queue
 CALL queue_init
+MOV A, #00000000b ; Point (0,0)
+CALL queue_push
+MOV A, #01110111b ; Point (7,7)
+CALL queue_push
+
 MOV A, #00110011b ; Point (3,3)
 CALL queue_push
 MOV A, #01000011b ; Point (4,3)
 CALL queue_push
 MOV A, #00101011b ; Point (5,3)
 CALL queue_push
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; MAIN
