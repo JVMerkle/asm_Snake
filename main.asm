@@ -63,11 +63,8 @@ MOV TMOD, #00000001b ; Enable M00
 MOV TCR, #T0_COUNT ; Init timer count register
 
 ; Init queue
+; Valid points: p(0,0) to p(7,7)
 CALL queue_init
-MOV A, #00000000b ; Point (0,0)
-CALL queue_push
-MOV A, #01110111b ; Point (7,7)
-CALL queue_push
 
 MOV A, #00110011b ; Point (3,3)
 CALL queue_push
