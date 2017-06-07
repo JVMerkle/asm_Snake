@@ -48,11 +48,8 @@ isr_et0:
 	DJNZ TCR, ret_isr_et0 ; Check if R6 is null
 	MOV TCR, #T0_COUNT ; Re-init timer count register
 	MOV ONE_SECOND_FLAG, #0x00
-ret_isr_et0:
+	ret_isr_et0:
 	RET
-
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; INCLUDES
@@ -91,7 +88,6 @@ MOV A, #01000011b ; Point (4,3)
 CALL queue_push
 MOV A, #00101011b ; Point (5,3)
 CALL queue_push
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; MAIN

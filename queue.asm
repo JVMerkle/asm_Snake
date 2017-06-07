@@ -20,6 +20,7 @@ QUEUE_TAIL equ 0x31
 QUEUE_BEGIN equ 0x32
 QUEUE_END equ 0x64
 
+; void ()
 ; Initialize Queue
 queue_init:
 	; Init Head and Tail
