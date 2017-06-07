@@ -46,6 +46,7 @@ render:
 	MOV R1, A
 	CALL get_axis_x
 	CALL get_axis_byte
+	MOV P0, #0x00 ; Disable Y Axis
 	MOV P1, R3 ; Set X axis
 	CALL get_axis_y
 	CALL get_axis_byte
