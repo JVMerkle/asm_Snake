@@ -41,12 +41,7 @@ CALL isr_et0
 RETI
 
 isr_ex0:
-	MOV A,P2
-	ANL A, #0x0F ; Mask the 4 buttons
-	CJNE A, 0x0F, valid ; The interrupt is invalid when no button is pressed
-	RETI
-	valid:
-		MOV DIR, A
+	MOV DIR, P2
 	RET
 
 isr_et0:
