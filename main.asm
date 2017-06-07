@@ -78,6 +78,10 @@ MOV TCR, #T0_COUNT ; Init timer count register
 
 MOV ONE_SECOND_FLAG, #0xFF ; Unset flag
 
+; Clear 8x8 Matrix
+MOV P0, #0x00
+MOV P1, #0x00
+
 ; Init queue
 ; Valid points: p(0,0) to p(7,7)
 CALL queue_init
