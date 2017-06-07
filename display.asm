@@ -19,10 +19,11 @@ TMP_VAR equ 0x20
 X_AXIS equ 0x21
 Y_AXIS equ 0x22
 
-; ()
+; void ()
+; Display all queue elements
 display:
 	MOV R0, QUEUE_TAIL
-	CALL add_to_display
+	CALL render
 	d_iterate:
 	; Get element addr after head
 		MOV R1, QUEUE_HEAD
@@ -38,11 +39,12 @@ display:
 		MOV A, #QUEUE_BEGIN ; Set next element
 	d_in_bound:
 	MOV R0, A
-	CALL add_to_display
+	CALL render
 	SJMP d_iterate
 
-; (R0)
-add_to_display:
+; void (R0)
+; Renders Point R0
+render:
 	MOV A, @R0 ; Get value
 	MOV R1, A
 	CALL get_axis_x
@@ -51,7 +53,8 @@ add_to_display:
 	CALL get_axis_y
 	CALL get_axis_byte
 	MOV Y_AXIS, R3
-	LCALL RENDER
+	MOV P1, X_AXIS
+	MOV P0, Y_AXIS
 	RET
 
 ; R3 (R2)
@@ -71,6 +74,7 @@ get_axis_byte:
 	SJMP d_check
 
 ; R2 (R1)
+; Decode X axis from element R1
 get_axis_x:
 	MOV A, R1
 	ANL A, #0xF0
@@ -79,15 +83,9 @@ get_axis_x:
 	RET
 
 ; R2 (R1)
+; Decode Y axis from element R1
 get_axis_y:
 	MOV A, R1
 	ANL A, #0x0F
 	MOV R2, A
-	RET
-
-; ()
-; Displays calulated axises on the matrix
-render:
-	MOV P1, X_AXIS
-	MOV P0, Y_AXIS
 	RET
