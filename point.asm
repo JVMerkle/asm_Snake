@@ -15,6 +15,21 @@
 ; You should have received a copy of the GNU General Public License
 ; along with mMio.  If not, see <http://www.gnu.org/licenses/>.
 
+; R3 (R1, R2)
+; Get keyboard input R1 and relating point R2 to
+; calculate the new point R3
+calc_new_point:
+
+; R3 (R1,R2)
+; Takes X axis R1 and Y axis R2 and
+; combines them to 1 byte representation R3
+encode_axes_to_byte:
+	MOV A, R1
+	SWAP A
+	ORL A, R2
+	MOV R3, A
+	RET
+
 ; R2 (R1)
 ; Decode X axis from element R1
 get_axis_x:
