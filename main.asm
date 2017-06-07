@@ -57,6 +57,7 @@ isr_et0:
 INCLUDE "queue.asm"
 INCLUDE "display.asm"
 INCLUDE "point.asm"
+INCLUDE "move.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; SUBROUTINES
