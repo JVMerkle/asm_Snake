@@ -39,7 +39,7 @@ queue_init:
 queue_push:
 	PUSH A ; Push the new element value
 	MOV A, QUEUE_HEAD
-	ADD A, #0x01
+	INC ACC
 	CJNE A, #QUEUE_END + 0x01, q_do_it ; Check queue bounds
 		MOV A, #QUEUE_BEGIN ; Set next element
 	q_do_it:
@@ -56,7 +56,7 @@ queue_pop:
 	MOV @R0, #0xFF ; Clear the element
 	MOV R0, A
 	MOV A, QUEUE_TAIL
-	ADD A, #0x01
+	INC ACC
 	CJNE A, #QUEUE_END + 0x01, q_do_it_2 ; Check queue bounds
 		MOV A, #QUEUE_BEGIN ; Set next element
 	q_do_it_2:
