@@ -224,7 +224,8 @@
 ]>
 <tk_mcuide_project version="" date="06/03/2017" creator_ver="1.4.7">
 	<general>
-		<authors><![CDATA[test]]></authors>
+		<authors><![CDATA[test
+]]></authors>
 		<copyright><![CDATA[]]></copyright>
 		<license><![CDATA[]]></license>
 		<processor type="8051" clock="12000" xdata="0" xcode="0"/>
@@ -261,18 +262,18 @@
 		/>
 	</general>
 	<other_options><![CDATA[]]></other_options>
-	<compiler_options><![CDATA[{_title 0 _list 0 _print 0 _nomod 0 max_ihex_rec_length 16 _object 0 _pagelength 0 QUIET 0 _symbols 0 CREATE_SIM_FILE 1 CREATE_BIN_FILE 1 optim_ena 0 _pagewidth 0 WARNING_LEVEL 0 _paging 0 _date 0} 0 {--verbose 1 -i {} --omf-51 0 --columns 0 custom {}} {adf 1} {-L 1 -M 0 custom {} -n 0 -P 0 -A 0 -a 0 -r {} -C 0 -c 0 -s 1 -u 0 -U 0 -w 0 -g MAP -quiet 0 -h 0 -x 0 -cpu 8051 -I 1 -i {}} {ihex 1 adf 1} {--out-fmt-s19 0 --fdollars-in-identifiers 0 --nogcse 0 --nooverlay 1 --no-peep-comments 0 --no-c-code-in-asm 0 --print-search-dirs 0 --nostdlib 0 --compile-only 0 --peep-asm 0 --nolabelopt 0 --short-is-8bits 0 --cyclomatic 0 --profile 0 --noinvariant 0 --no-reg-params 0 --noinduction 1 --out-fmt-ihx 0 --nojtbound 0 --opt-code-size 0 --less-pedantic 0 --no-peep 0 -S 0 --verbose 1 --funsigned-char 0 --xstack 0 --no-xinit-opt 0 --debug 1 --preprocessonly 0 --c1mode 0 -V 1 --float-reent 0 --parms-in-bank1 0 --opt-code-speed 0 --nostdinc 0 --main-return 0 --xram-movc 0 --fommit-frame-pointer 0 --fverbose-asm 0 --int-long-reent 0 --all-callee-saves 0 --stack-probe 0 --noloopreverse 0 --stack-auto 0 --use-stdout 0} {model --model-small standard --std-sdcc89 stack {} custom {}} {--codeseg {} --constseg {} --code-loc {} --stack-size {} --xram-loc {} --lib-path {} --xstack-loc {} --stack-loc {} --data-loc {}} {-l {} -L {} --disable-warning {} -I {}} {-l 1 -A {} -F hex custom {}} {adf 1}]]></compiler_options>
+	<compiler_options><![CDATA[{_title 0 _list 0 _print 0 _nomod 0 max_ihex_rec_length 16 _object 0 _pagelength 0 QUIET 0 _symbols 0 CREATE_SIM_FILE 1 CREATE_BIN_FILE 1 optim_ena 0 _pagewidth 0 WARNING_LEVEL 0 _paging 0 _date 0} 0 {--verbose 1 -i {} --omf-51 0 --columns 0 custom {}} {adf 1} {-L 1 -M 0 custom {} -n 0 -P 0 -A 0 -a 0 -r {} -C 0 -c 0 -s 1 -u 0 -U 0 -w 0 -g MAP -quiet 0 -h 0 -x 0 -cpu 8051 -I 1 -i {}} {ihex 1 adf 1} {--out-fmt-s19 0 --fdollars-in-identifiers 0 --nogcse 0 --nooverlay 1 --no-peep-comments 0 --no-c-code-in-asm 0 --print-search-dirs 0 --nostdlib 0 --short-is-8bits 0 --cyclomatic 0 --compile-only 0 --peep-asm 0 --nolabelopt 0 --profile 0 --noinvariant 0 --no-reg-params 0 --noinduction 1 --out-fmt-ihx 0 --nojtbound 0 --opt-code-size 0 --less-pedantic 0 --no-peep 0 -S 0 --verbose 1 --funsigned-char 0 --xstack 0 --no-xinit-opt 0 --debug 1 --preprocessonly 0 --c1mode 0 -V 1 --float-reent 0 --parms-in-bank1 0 --opt-code-speed 0 --nostdinc 0 --main-return 0 --xram-movc 0 --fommit-frame-pointer 0 --fverbose-asm 0 --int-long-reent 0 --all-callee-saves 0 --stack-probe 0 --noloopreverse 0 --stack-auto 0 --use-stdout 0} {model --model-small standard --std-sdcc89 stack {} custom {}} {--codeseg {} --constseg {} --code-loc {} --stack-size {} --xram-loc {} --lib-path {} --xstack-loc {} --stack-loc {} --data-loc {}} {-l {} -L {} --disable-warning {} -I {}} {-l 1 -A {} -F hex custom {}} {adf 1}]]></compiler_options>
 	<files
-		count="4"
-		current_file="3"
+		count="5"
+		current_file="2"
 		current_file2="-1"
 		pwin_sash="0"
 		selected_view="0"
 		pwin_orient="horizontal">
 
 		<file name="queue.asm" active="yes" o_bookmark="0" p_bookmark="0" file_index="1" read_only="0" highlight="0">
-			<actual_line value="13"/>
-			<md5_hash value="1A293F6061DF2AEE8D480081EB6F7916"/>
+			<actual_line value="47"/>
+			<md5_hash value="8F18F146A7ABF37AAC137DC47F3E612F"/>
 			<path><![CDATA[]]></path>
 			<bookmarks>
 				0
@@ -285,9 +286,9 @@
 			<notes><![CDATA[]]></notes>
 		</file>
 
-		<file name="queue_test.asm" active="yes" o_bookmark="0" p_bookmark="0" file_index="2" read_only="0" highlight="0">
-			<actual_line value="11"/>
-			<md5_hash value="E3CF325802794DA1773A2CAE98A1F8D1"/>
+		<file name="queue_test.asm" active="no" o_bookmark="0" p_bookmark="0" file_index="0" read_only="0" highlight="0">
+			<actual_line value="16"/>
+			<md5_hash value="89EE863350AAA27AF1736089D9DE2B34"/>
 			<path><![CDATA[]]></path>
 			<bookmarks>
 				0
@@ -301,8 +302,8 @@
 		</file>
 
 		<file name="main.asm" active="yes" o_bookmark="0" p_bookmark="0" file_index="0" read_only="0" highlight="0">
-			<actual_line value="70"/>
-			<md5_hash value="F02206F85FC3258B9B865E9118619EFA"/>
+			<actual_line value="51"/>
+			<md5_hash value="EC4B8BFA6B4BBABF6D1451200FC60B62"/>
 			<path><![CDATA[]]></path>
 			<bookmarks>
 				0
@@ -315,9 +316,39 @@
 			<notes><![CDATA[]]></notes>
 		</file>
 
-		<file name="display_queue.asm" active="yes" o_bookmark="0" p_bookmark="0" file_index="3" read_only="0" highlight="0">
-			<actual_line value="67"/>
-			<md5_hash value="3CE98C9D2880EACA5AEBD2E0F65F699F"/>
+		<file name="display.asm" active="yes" o_bookmark="0" p_bookmark="0" file_index="2" read_only="0" highlight="0">
+			<actual_line value="47"/>
+			<md5_hash value="3355BBEF828730AC793101B821E8B82E"/>
+			<path><![CDATA[]]></path>
+			<bookmarks>
+				0
+			</bookmarks>
+			<breakpoints>
+				0
+			</breakpoints>
+			<eol value="lf"/>
+			<encoding value="utf-8"/>
+			<notes><![CDATA[]]></notes>
+		</file>
+
+		<file name="move.asm" active="yes" o_bookmark="0" p_bookmark="0" file_index="3" read_only="0" highlight="0">
+			<actual_line value="20"/>
+			<md5_hash value="5BEE7B34487DB13E9D0CBD797A87401F"/>
+			<path><![CDATA[]]></path>
+			<bookmarks>
+				0
+			</bookmarks>
+			<breakpoints>
+				0
+			</breakpoints>
+			<eol value="lf"/>
+			<encoding value="utf-8"/>
+			<notes><![CDATA[]]></notes>
+		</file>
+
+		<file name="point.asm" active="yes" o_bookmark="0" p_bookmark="0" file_index="4" read_only="0" highlight="0">
+			<actual_line value="18"/>
+			<md5_hash value="F4DFE21693B4BA91D086E10385644DF1"/>
 			<path><![CDATA[]]></path>
 			<bookmarks>
 				0
