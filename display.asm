@@ -16,8 +16,6 @@
 ; along with mMio.  If not, see <http://www.gnu.org/licenses/>.
 
 TMP_VAR equ 0x20
-X_AXIS equ 0x21
-Y_AXIS equ 0x22
 
 ; void ()
 ; Display all queue elements
@@ -32,7 +30,6 @@ display:
 	ADD A, #0x01
 	MOV TMP_VAR, R1
 	CJNE A, TMP_VAR, d_end_not_reached ; Check if reached head
-		LCALL render
 		RET ; END REACHED
 	d_end_not_reached:
 	CJNE A, #QUEUE_END + 0x01, d_in_bound ; Check queue bounds
@@ -49,12 +46,10 @@ render:
 	MOV R1, A
 	CALL get_axis_x
 	CALL get_axis_byte
-	MOV X_AXIS, R3
+	MOV P1, R3 ; Set X axis
 	CALL get_axis_y
 	CALL get_axis_byte
-	MOV Y_AXIS, R3
-	MOV P1, X_AXIS
-	MOV P0, Y_AXIS
+	MOV P0, R3 ; Set Y axis
 	RET
 
 ; R3 (R2)
