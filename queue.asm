@@ -37,14 +37,14 @@ queue_init:
 
 ; void (A)
 queue_push:
-	PUSH A ; Push the new element value
+	PUSH ACC ; Push the new element value
 	MOV A, QUEUE_HEAD
 	INC ACC
 	CJNE A, #QUEUE_END + 0x01, q_do_it ; Check queue bounds
 		MOV A, #QUEUE_BEGIN ; Set next element
 	q_do_it:
 	MOV R0, A ; R0 is the pointer to the new element
-	POP A ; Pop the element value
+	POP ACC ; Pop the element value
 	MOV @R0, A ; Write the element value
 	MOV QUEUE_HEAD, R0 ; Set the head
 	RET
