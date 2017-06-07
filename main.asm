@@ -62,11 +62,6 @@ INCLUDE "move.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; SUBROUTINES
 
-; Move Snake
-snake_next:
-	NOP
-	RET
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; INITIALISATION
 
@@ -105,7 +100,7 @@ main:
 	MOV A, ONE_SECOND_FLAG
 	JNZ main ; Jump when ONE_SECOND_FLAG != 0x00
 	MOV ONE_SECOND_FLAG, #0xFF ; Unset flag
-	LCALL snake_next
+	LCALL move
 	SJMP main
 
 END
