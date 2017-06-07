@@ -67,20 +67,3 @@ get_axis_byte:
 		MOV R3, A
 	DEC R2
 	SJMP d_check
-
-; R2 (R1)
-; Decode X axis from element R1
-get_axis_x:
-	MOV A, R1
-	ANL A, #0xF0
-	SWAP A
-	MOV R2, A
-	RET
-
-; R2 (R1)
-; Decode Y axis from element R1
-get_axis_y:
-	MOV A, R1
-	ANL A, #0x0F
-	MOV R2, A
-	RET
