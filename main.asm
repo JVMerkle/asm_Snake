@@ -87,7 +87,7 @@ MOV A, #00110011b ; Point (3,3)
 CALL queue_push
 MOV A, #01000011b ; Point (4,3)
 CALL queue_push
-MOV A, #01011011b ; Point (5,3)
+MOV A, #01010011b ; Point (5,3)
 CALL queue_push
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
