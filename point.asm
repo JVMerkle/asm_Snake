@@ -15,19 +15,33 @@
 ; You should have received a copy of the GNU General Public License
 ; along with mMio.  If not, see <http://www.gnu.org/licenses/>.
 
-; R3 (R1, R2)
-; Get keyboard input R1 and relating point R2 to
-; calculate the new point R3
+; R1 (R1)
+; Get relating point R1 to
+; calculate the next point R1
 calc_new_point:
+	CALL get_axis_x
+	INC R2
+	MOV A, R2
+	MOV R3, A
+	CALL get_axis_y
+	INC R2
+	CALL encode_axes_to_byte
+	RET
 
-; R3 (R1,R2)
-; Takes X axis R1 and Y axis R2 and
+; R1 (R3,R2)
+; Takes X axis R3 and Y axis R2 and
 ; combines them to 1 byte representation R3
 encode_axes_to_byte:
-	MOV A, R1
+	; Handle Y
+	MOV A, R3
+	ANL A, #0111b ; Mask 3 lowest bits
 	SWAP A
-	ORL A, R2
-	MOV R3, A
+	MOV R1, A
+	; Handle X
+	MOV A, R2
+	ANL A, #0111b ; Mask 3 lowest bits
+	ORL A, R1 ; Combine X and Y
+	MOV R1, A
 	RET
 
 ; R2 (R1)

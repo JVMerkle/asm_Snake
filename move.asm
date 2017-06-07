@@ -16,5 +16,11 @@
 ; along with mMio.  If not, see <http://www.gnu.org/licenses/>.
 
 move:
-	NOP
+	MOV R0, QUEUE_HEAD
+	MOV A, @R0
+	MOV R1, A
+	LCALL calc_new_point
+	MOV A, R1
+	CALL queue_push
+	CALL queue_pop
 	RET
