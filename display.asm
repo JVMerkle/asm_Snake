@@ -13,7 +13,7 @@
 ; GNU General Public License for more details.
 
 ; You should have received a copy of the GNU General Public License
-; along with mMio.  If not, see <http://www.gnu.org/licenses/>.
+; along with asm_Snake.  If not, see <http://www.gnu.org/licenses/>.
 
 TMP_VAR equ 0x20
 
