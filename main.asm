@@ -20,7 +20,7 @@
 
 T0_COUNT equ 1d ; ET0 runs T0_COUNT times
 TH0_INIT equ 0xFD
-DIR equ R7 ; Direction Byte set by ISR
+DIR equ 0x20 ; Direction Byte set by ISR
 TCR equ R6 ; Timer count register used by ET0
 
 GAME_CYCLE_FLAG equ 28h ; 0x00 = Set
@@ -105,7 +105,9 @@ main:
 	MOV A, GAME_CYCLE_FLAG
 	JNZ main ; Jump when ONE_SECOND_FLAG != 0x00
 	MOV GAME_CYCLE_FLAG, #0xFF ; Unset flag
+	CLR EX0 ; Disable EX0
 	LCALL move ; Move the snake in the new direction
+	SETB EX0 ; Enable EX0
 	SJMP main
 
 END

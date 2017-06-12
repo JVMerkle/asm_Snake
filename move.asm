@@ -19,10 +19,29 @@ move:
 	MOV R0, QUEUE_HEAD
 	MOV A, @R0
 	MOV R1, A
-	LCALL move_right
+	CALL get_next_point
 	MOV A, R1
 	CALL queue_push
 	CALL queue_pop
+	RET
+
+; R1 (void)
+; Calculates the next point based on the Direction Byte (DIR)
+get_next_point:
+	JNB DIR.0, next_0
+	CALL move_left
+	RET
+next_0:	JNB DIR.1, next_1
+	CALL move_right
+	RET
+next_1:	JNB DIR.2, next_2
+	CALL move_up
+	RET
+next_2:	JNB DIR.3, next_3
+	CALL move_down
+	RET
+next_3: ; INVALUD INPUT
+	CALL move_right
 	RET
 
 ; R1 (R1)
