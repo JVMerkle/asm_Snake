@@ -15,19 +15,6 @@
 ; You should have received a copy of the GNU General Public License
 ; along with asm_Snake.  If not, see <http://www.gnu.org/licenses/>.
 
-; R1 (R1)
-; Get relating point R1 to
-; calculate the next point R1
-calc_new_point:
-	CALL get_axis_x
-	INC R2
-	MOV A, R2
-	MOV R3, A
-	CALL get_axis_y
-	INC R2
-	CALL encode_axes_to_byte
-	RET
-
 ; R1 (R3,R2)
 ; Takes X axis R3 and Y axis R2 and
 ; combines them to 1 byte representation R3
