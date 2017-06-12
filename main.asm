@@ -41,7 +41,7 @@ CALL isr_et0
 RETI
 
 isr_ex0:
-	MOV DIR, P2
+	MOV DIR, P2 ; Save Keyboard input
 	RET
 
 isr_et0:
@@ -97,10 +97,12 @@ SETB TR0 ; Start Timer 0
 
 main:
 	LCALL display
+
+	; Check if one second passed
 	MOV A, ONE_SECOND_FLAG
 	JNZ main ; Jump when ONE_SECOND_FLAG != 0x00
 	MOV ONE_SECOND_FLAG, #0xFF ; Unset flag
-	LCALL move
+	LCALL move ; Move the snake in the new direction
 	SJMP main
 
 END
