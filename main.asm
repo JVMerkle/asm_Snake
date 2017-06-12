@@ -18,11 +18,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; DEFINITIONS
 
-T0_COUNT equ 16d ; ET0 runs T0_COUNT times to reach a one second interrupt
+T0_COUNT equ 1d ; ET0 runs T0_COUNT times
+TH0_INIT equ 0xFD
 DIR equ R7 ; Direction Byte set by ISR
 TCR equ R6 ; Timer count register used by ET0
 
-ONE_SECOND_FLAG equ 28h ; 0x00 = Set
+GAME_CYCLE_FLAG equ 28h ; 0x00 = Set
 
 ORG 0000h
 LJMP init
@@ -45,9 +46,10 @@ isr_ex0:
 	RET
 
 isr_et0:
+	MOV TH0, #TH0_INIT ; Re-init TH0
 	DJNZ TCR, ret_isr_et0 ; Check if R6 is null
 	MOV TCR, #T0_COUNT ; Re-init timer count register
-	MOV ONE_SECOND_FLAG, #0x00
+	MOV GAME_CYCLE_FLAG, #0x00
 	ret_isr_et0:
 	RET
 
@@ -72,8 +74,9 @@ SETB EX0 ; External 0 Interrupt
 SETB ET0 ; Timer 0 Interrupt
 ORL TMOD, #00000001b ; Set ET0 to 16-bit mode
 MOV TCR, #T0_COUNT ; Init timer count register
+MOV TH0, #TH0_INIT
 
-MOV ONE_SECOND_FLAG, #0xFF ; Unset flag
+MOV GAME_CYCLE_FLAG, #0xFF ; Unset flag
 
 ; Clear 8x8 Matrix
 MOV P0, #0x00
@@ -99,9 +102,9 @@ main:
 	LCALL display
 
 	; Check if one second passed
-	MOV A, ONE_SECOND_FLAG
+	MOV A, GAME_CYCLE_FLAG
 	JNZ main ; Jump when ONE_SECOND_FLAG != 0x00
-	MOV ONE_SECOND_FLAG, #0xFF ; Unset flag
+	MOV GAME_CYCLE_FLAG, #0xFF ; Unset flag
 	LCALL move ; Move the snake in the new direction
 	SJMP main
 
