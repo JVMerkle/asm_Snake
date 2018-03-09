@@ -1,4 +1,4 @@
-# 8051 Snake on a 8x8 LED Matrix
+# Incomplete 8051 Snake on a 8x8 LED Matrix
 Development with the [MCU 8051 IDE](https://sourceforge.net/projects/mcu8051ide/)
 
 # General Information for developing with the 8051
